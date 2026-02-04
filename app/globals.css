@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* PRIMARY — Courier Blue */
+  --color-primary-50:  #eaf1fb;
+  --color-primary-100: #d6e3f7;
+  --color-primary-200: #adc7ef;
+  --color-primary-300: #84abe7;
+  --color-primary-400: #5b8fdf;
+  --color-primary-500: #1f4fd8; /* MAIN BRAND BLUE */
+  --color-primary-600: #1b46c2;
+  --color-primary-700: #173da4;
+  --color-primary-800: #133486;
+  --color-primary-900: #0f2b68;
+  --color-primary-950: #081a40;
+
+  /* ACCENT — Delivery Orange */
+  --color-accent-50:  #fff1e6;
+  --color-accent-100: #ffd7bf;
+  --color-accent-200: #ffbb99;
+  --color-accent-300: #ff9f73;
+  --color-accent-400: #ff834d;
+  --color-accent-500: #ff6a00; /* MAIN BRAND ORANGE */
+  --color-accent-600: #e65f00;
+  --color-accent-700: #cc5400;
+  --color-accent-800: #b34900;
+  --color-accent-900: #993e00;
+  --color-accent-950: #662900;
+
+  /* STATUS COLORS */
+  --color-success-500: #22c55e;
+  --color-warning-500: #f59e0b;
+  --color-error-500: #ef4444;
+
+  /* GRAYS — Neutral UI */
+  --color-gray-50:  #fafafa;
+  --color-gray-100: #f4f4f5;
+  --color-gray-200: #e4e4e7;
+  --color-gray-300: #d4d4d8;
+  --color-gray-400: #a1a1aa;
+  --color-gray-500: #71717a;
+  --color-gray-600: #52525b;
+  --color-gray-700: #3f3f46;
+  --color-gray-800: #27272a;
+  --color-gray-900: #18181b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #e5e7eb;
   }
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
 }
