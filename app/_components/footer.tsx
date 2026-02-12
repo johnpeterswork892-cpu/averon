@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-900 text-gray-300">
+    <footer className="bg-gray-100 text-primary-600">
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
           <Image
@@ -14,7 +14,7 @@ export default function Footer() {
             priority
             className="w-25 h-auto -mt-8.75"
           />
-          <p className="text-sm leading-relaxed text-gray-400 max-w-sm">
+          <p className="text-sm leading-relaxed text-primary-700 max-w-sm">
             Your trusted partner for express courier services, freight logistics, and global supply chain solutions.
           </p>
         </div>
@@ -23,22 +23,22 @@ export default function Footer() {
           <h4 className="text-accent-500 font-semibold mb-4">Company</h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/about" className="hover:text-white transition">
+              <Link href="/about" className="hover:text-primary-400 transition">
                 About Us
               </Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-white transition">
+              <Link href="/services" className="hover:text-primary-400 transition">
                 Services
               </Link>
             </li>
             <li>
-              <Link href="/careers" className="hover:text-white transition">
+              <Link href="/careers" className="hover:text-primary-400 transition">
                 Careers
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-white transition">
+              <Link href="/contact" className="hover:text-primary-400 transition">
                 Contact
               </Link>
             </li>
@@ -49,25 +49,25 @@ export default function Footer() {
           <h4 className="text-accent-500 font-semibold mb-4">Support</h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/track" className="hover:text-white transition">
+              <Link href="/track" className="hover:text-primary-400 transition">
                 Track Shipment
               </Link>
             </li>
             <li>
               <Link
                 href="/customer-service"
-                className="hover:text-white transition"
+                className="hover:text-primary-400 transition"
               >
                 Customer Service
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-white transition">
+              <Link href="/" className="hover:text-primary-400 transition">
                 FAQs
               </Link>
             </li>
             <li>
-              <Link href="/claims" className="hover:text-white transition">
+              <Link href="/claims" className="hover:text-primary-400 transition">
                 File a Claim
               </Link>
             </li>
@@ -78,17 +78,17 @@ export default function Footer() {
           <h4 className="text-accent-500 font-semibold mb-4">Legal</h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/terms" className="hover:text-white transition">
+              <Link href="/terms" className="hover:text-primary-400 transition">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-white transition">
+              <Link href="/privacy" className="hover:text-primary-400 transition">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="/cookies" className="hover:text-white transition">
+              <Link href="/cookies" className="hover:text-primary-400 transition">
                 Cookie Policy
               </Link>
             </li>

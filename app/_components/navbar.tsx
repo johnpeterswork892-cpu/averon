@@ -138,6 +138,7 @@ export default function Navbar() {
               Customer Service
             </Link>
 
+
             <Link
               href="/track"
               className="bg-accent-500 flex gap-2 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-accent-600 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
@@ -196,6 +197,14 @@ export default function Navbar() {
               className="block w-full text-left text-gray-700 hover:text-primary-600 py-2 font-medium border-t border-gray-100 pt-3"
             >
               Customer Service
+            </Link>
+
+            <Link
+              href="/faq"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full text-left text-gray-700 hover:text-primary-600 py-2 font-medium"
+            >
+              FAQ
             </Link>
 
             <Link

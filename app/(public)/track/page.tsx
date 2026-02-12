@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import type { TrackingData } from "../_types/trackingTypes";
-import { formatDateTime, getTimeAgo } from "../_utils/trackUtils";
+import type { TrackingData } from "../../_types/trackingTypes";
+import { formatDateTime, getTimeAgo } from "../../_utils/trackUtils";
 
 type ViewMode = "timeline" | "list";
 

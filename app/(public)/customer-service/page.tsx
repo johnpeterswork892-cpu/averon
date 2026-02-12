@@ -1,8 +1,8 @@
 'use client'
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { supportCategories, faqItems } from "../_utils/customerServiceData";
-import type { ContactFormData, FormErrors } from "../_types/customerService";
+import { supportCategories, faqItems } from "../../_utils/customerServiceData";
+import type { ContactFormData, FormErrors } from "../../_types/customerService";
 
 export default function CustomerServicePage() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -223,7 +223,7 @@ export default function CustomerServicePage() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow border-2 border-transparent"
               >
-                <div className="w-16 h-16 bg-linear-to-br from-[#0f2b68] to-accent-5border-accent-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-16 h-16 bg-primary-900 to-accent-5border-accent-500 rounded-xl flex items-center justify-center mb-4">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="none"
@@ -262,7 +262,7 @@ export default function CustomerServicePage() {
                     </div>
                   )}
 
-                  {category.contact.phone && (
+                  {/* {category.contact.phone && (
                     <div className="flex items-center gap-2 text-gray-700">
                       <svg
                         className="w-4 h-4 text-accent-5border-accent-500"
@@ -298,7 +298,7 @@ export default function CustomerServicePage() {
                       </svg>
                       <span>{category.contact.hours}</span>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </motion.div>
             ))}
@@ -380,7 +380,7 @@ export default function CustomerServicePage() {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors ${
+                  className={`w-full px-4 py-3 text-gray-950 border-2 rounded-xl focus:outline-none transition-colors ${
                     errors.name
                       ? "border-red-500 focus:border-red-600"
                       : "border-gray-200 focus:border-accent-500"
@@ -405,7 +405,7 @@ export default function CustomerServicePage() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors ${
+                  className={`w-full px-4 py-3 border-2 text-gray-950 rounded-xl focus:outline-none transition-colors ${
                     errors.email
                       ? "border-red-500 focus:border-red-600"
                       : "border-gray-200 focus:border-accent-500"
@@ -431,12 +431,11 @@ export default function CustomerServicePage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors ${
+                  className={`w-full px-4 py-3 border-2 text-gray-950 rounded-xl focus:outline-none transition-colors ${
                     errors.phone
                       ? "border-red-500 focus:border-red-600"
                       : "border-gray-200 focus:border-accent-500"
                   }`}
-                  placeholder="+234 123 456 7890"
                 />
                 {errors.phone && (
                   <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
@@ -455,7 +454,7 @@ export default function CustomerServicePage() {
                   name="category"
                   value={formData.category}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors ${
+                  className={`w-full px-4 py-3 border-2 text-gray-950 rounded-xl focus:outline-none transition-colors ${
                     errors.category
                       ? "border-red-500 focus:border-red-600"
                       : "border-gray-200 focus:border-accent-500"
@@ -487,7 +486,7 @@ export default function CustomerServicePage() {
                 name="subject"
                 value={formData.subject}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors ${
+                className={`w-full px-4 py-3 border-2 text-gray-950 rounded-xl focus:outline-none transition-colors ${
                   errors.subject
                     ? "border-red-500 focus:border-red-600"
                     : "border-gray-200 focus:border-accent-500"

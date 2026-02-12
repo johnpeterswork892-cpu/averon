@@ -18,7 +18,7 @@ export const supportCategories: SupportCategory[] = [
     description: "Invoice questions, payment methods, refunds, and account billing",
     icon: "receipt",
     contact: {
-      email: "billing@logistics.com",
+      email: "billing@averonlogistics.com",
       phone: "+234 123 456 7891",
       hours: "Mon-Fri: 9AM - 5PM WAT",
     },
@@ -29,7 +29,7 @@ export const supportCategories: SupportCategory[] = [
     description: "Questions about our services, pricing, locations, and partnerships",
     icon: "help",
     contact: {
-      email: "support@logistics.com",
+      email: "support@averonlogistics.com",
       phone: "+234 123 456 7892",
       hours: "Mon-Sat: 8AM - 8PM WAT",
     },
@@ -40,7 +40,7 @@ export const supportCategories: SupportCategory[] = [
     description: "Website issues, account access, tracking system, and app problems",
     icon: "settings",
     contact: {
-      email: "tech@logistics.com",
+      email: "tech@averonlogistics.com",
       phone: "+234 123 456 7893",
       hours: "24/7 Support Available",
     },
