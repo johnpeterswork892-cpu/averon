@@ -28,7 +28,7 @@ export default function CreateShipmentPage() {
 
   const generateTrackingNumber = async () => {
     try {
-      const res = await fetch('/api/admin/tracking-numbers/generate', {
+      const res = await fetch('/api/genTrackingNum', {
         method: 'POST',
       });
       const data = await res.json();
@@ -59,7 +59,7 @@ export default function CreateShipmentPage() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch('/api/admin/shipments', {
+      const res = await fetch('/api/adminShipments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -150,7 +150,7 @@ export default function CreateShipmentPage() {
                   onChange={(e) => setTrackingNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
                   placeholder="Enter 10-digit tracking number"
                   maxLength={10}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 text-primary-950 focus:border-transparent"
                 />
                 <p className="mt-2 text-sm text-gray-500">{trackingNumber.length}/10 digits</p>
               </div>
@@ -180,7 +180,7 @@ export default function CreateShipmentPage() {
                 <select
                   value={currentStatus}
                   onChange={(e) => setCurrentStatus(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                   required
                 >
                   {statusOptions.map((status) => (
@@ -200,7 +200,7 @@ export default function CreateShipmentPage() {
                   value={currentLocation}
                   onChange={(e) => setCurrentLocation(e.target.value)}
                   placeholder="e.g., Lagos Distribution Center"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-primary-950 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   required
                 />
               </div>
@@ -214,7 +214,7 @@ export default function CreateShipmentPage() {
                   value={estimatedDelivery}
                   onChange={(e) => setEstimatedDelivery(e.target.value)}
                   placeholder="e.g., Feb 15, 2026"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                   required
                 />
               </div>
@@ -228,7 +228,7 @@ export default function CreateShipmentPage() {
                   value={courier}
                   onChange={(e) => setCourier(e.target.value)}
                   placeholder="Courier name or ID"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -252,7 +252,7 @@ export default function CreateShipmentPage() {
                   value={carrier}
                   onChange={(e) => setCarrier(e.target.value)}
                   placeholder="e.g., Averon Express"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                   required
                 />
               </div>
@@ -266,7 +266,7 @@ export default function CreateShipmentPage() {
                   value={serviceType}
                   onChange={(e) => setServiceType(e.target.value)}
                   placeholder="e.g., Express Delivery"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                   required
                 />
               </div>
@@ -280,7 +280,7 @@ export default function CreateShipmentPage() {
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
                   placeholder="e.g., 2.5 kg"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                   required
                 />
               </div>
@@ -294,7 +294,7 @@ export default function CreateShipmentPage() {
                   value={dimensions}
                   onChange={(e) => setDimensions(e.target.value)}
                   placeholder="e.g., 30x20x15 cm"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                   required
                 />
               </div>
@@ -308,7 +308,7 @@ export default function CreateShipmentPage() {
                   value={reference}
                   onChange={(e) => setReference(e.target.value)}
                   placeholder="Customer reference or order number"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -330,7 +330,7 @@ export default function CreateShipmentPage() {
                 value={initialEventDescription}
                 onChange={(e) => setInitialEventDescription(e.target.value)}
                 rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
                 placeholder="Describe the initial event..."
               />
               <p className="mt-2 text-sm text-gray-500">

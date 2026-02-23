@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Package, Truck, CheckCircle, Clock } from 'lucide-react';
 
 interface DashboardStats {
   totalShipments: number;
@@ -54,28 +55,28 @@ export default function AdminDashboard() {
     {
       title: 'Total Shipments',
       value: stats?.totalShipments || 0,
-      icon: '📦',
+      icon: Package,
       color: 'bg-blue-500',
       link: '/admin/shipments',
     },
     {
       title: 'Active Deliveries',
       value: stats?.activeDeliveries || 0,
-      icon: '🚚',
+      icon: Truck,
       color: 'bg-accent-500',
       link: '/admin/shipments?filter=active',
     },
     {
       title: 'Completed Today',
       value: stats?.completedToday || 0,
-      icon: '✅',
+      icon: CheckCircle,
       color: 'bg-green-500',
       link: '/admin/shipments?filter=completed',
     },
     {
       title: 'Pending Pickup',
       value: stats?.pendingPickup || 0,
-      icon: '⏳',
+      icon: Clock,
       color: 'bg-yellow-500',
       link: '/admin/shipments?filter=pending',
     },
@@ -140,8 +141,8 @@ export default function AdminDashboard() {
                       <p className="text-sm text-gray-500 mb-1">{card.title}</p>
                       <p className="text-3xl font-bold text-gray-900">{card.value}</p>
                     </div>
-                    <div className={`${card.color} w-12 h-12 rounded-lg flex items-center justify-center text-2xl`}>
-                      {card.icon}
+                    <div className={`${card.color} w-12 h-12 rounded-lg flex items-center justify-center text-white`}>
+                      <card.icon size={24} />
                     </div>
                   </div>
                 </div>

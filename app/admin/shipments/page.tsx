@@ -38,7 +38,7 @@ export default function ShipmentsPage() {
 
   const fetchShipments = async () => {
     try {
-      const res = await fetch('/api/admin/shipments');
+      const res = await fetch('/api/adminShipments');
       const data = await res.json();
       if (data.success) {
         setShipments(data.data);

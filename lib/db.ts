@@ -1,34 +1,68 @@
 import mongoose from "mongoose";
 
-declare global {
-  var mongooseGlobal: {
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
-  } | undefined;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error("MONGODB_URI is not defined");
 }
 
-const cached = global.mongooseGlobal ?? (global.mongooseGlobal = {
-  conn: null,
-  promise: null,
-});
+/**
+ * Define cached connection structure type
+ */
+type MongooseCache = {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+};
 
-export default async function dbConnect() {
-  const uri = process.env.MONGODB_URI;
+/**
+ * Extend global type properly
+ */
+declare global {
+  // eslint-disable-next-line no-var
+  var mongooseCache: MongooseCache | undefined;
+}
 
-  if (!uri) {
-    throw new Error("MONGODB_URI is not defined");
-  }
+const globalWithCache = global as typeof globalThis & {
+  mongooseCache?: MongooseCache;
+};
 
+const cached: MongooseCache =
+  globalWithCache.mongooseCache ?? {
+    conn: null,
+    promise: null,
+  };
+
+if (!globalWithCache.mongooseCache) {
+  globalWithCache.mongooseCache = cached;
+}
+
+export default async function dbConnect(): Promise<typeof mongoose> {
   if (cached.conn) {
+    console.log("Using cached MongoDB connection");
     return cached.conn;
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 10000,
+    console.log("Creating new MongoDB connection...");
+    console.log("URI:", MONGODB_URI);
+
+    cached.promise = mongoose.connect(MONGODB_URI!, {
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
     });
   }
 
-  cached.conn = await cached.promise;
-  return cached.conn;
+  try {
+    cached.conn = await cached.promise;
+
+    console.log("MongoDB connected");
+    console.log("Host:", mongoose.connection.host);
+    console.log("DB Name:", mongoose.connection.name);
+    console.log("ReadyState:", mongoose.connection.readyState);
+
+    return cached.conn;
+  } catch (error) {
+    console.error("MongoDB connection failed:", error);
+    throw error;
+  }
 }
