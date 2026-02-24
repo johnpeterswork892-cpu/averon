@@ -31,7 +31,7 @@ export default function AdminDashboard() {
 
   const fetchDashboardStats = async () => {
     try {
-      const res = await fetch('/api/admin/dashboard');
+      const res = await fetch('/api/dashboard');
       const data = await res.json();
       if (data.success) {
         setStats(data.data);
@@ -56,7 +56,7 @@ export default function AdminDashboard() {
       title: 'Total Shipments',
       value: stats?.totalShipments || 0,
       icon: Package,
-      color: 'bg-blue-500',
+      color: 'bg-primary-800',
       link: '/admin/shipments',
     },
     {
@@ -116,7 +116,7 @@ export default function AdminDashboard() {
           </Link>
           <Link
             href="/admin/tracking-numbers"
-            className="inline-flex items-center px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-primary-800 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors"
           >
             <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />

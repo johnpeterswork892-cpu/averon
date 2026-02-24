@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { DayPicker } from 'react-day-picker';
+import { format } from 'date-fns';
+import 'react-day-picker/dist/style.css';
 
 export default function CreateShipmentPage() {
   const router = useRouter();
@@ -14,6 +17,9 @@ export default function CreateShipmentPage() {
   const [currentStatus, setCurrentStatus] = useState('Order Placed');
   const [currentLocation, setCurrentLocation] = useState('');
   const [estimatedDelivery, setEstimatedDelivery] = useState('');
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const calendarRef = useRef<HTMLDivElement>(null);
   const [courier, setCourier] = useState('');
 
   // Package details
@@ -25,6 +31,25 @@ export default function CreateShipmentPage() {
 
   // Initial event
   const [initialEventDescription, setInitialEventDescription] = useState('Order has been placed and is being processed');
+
+  // Close calendar when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
+        setShowCalendar(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleDateSelect = (date: Date | undefined) => {
+    setSelectedDate(date);
+    if (date) {
+      setEstimatedDelivery(format(date, 'MMM dd, yyyy'));
+      setShowCalendar(false);
+    }
+  };
 
   const generateTrackingNumber = async () => {
     try {
@@ -205,18 +230,35 @@ export default function CreateShipmentPage() {
                 />
               </div>
 
-              <div>
+              {/* Estimated Delivery - Calendar Picker */}
+              <div className="relative" ref={calendarRef}>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Estimated Delivery *
                 </label>
-                <input
-                  type="text"
-                  value={estimatedDelivery}
-                  onChange={(e) => setEstimatedDelivery(e.target.value)}
-                  placeholder="e.g., Feb 15, 2026"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-primary-950 focus:ring-primary-500 focus:border-transparent"
-                  required
-                />
+                <button
+                  type="button"
+                  onClick={() => setShowCalendar((prev) => !prev)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-left flex items-center justify-between bg-white"
+                >
+                  <span className={estimatedDelivery ? 'text-primary-950' : 'text-gray-400'}>
+                    {estimatedDelivery || 'Select a date'}
+                  </span>
+                  <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </button>
+
+                {showCalendar && (
+                  <div className="absolute z-50 mt-2 bg-white border text-primary-800 border-gray-200 rounded-xl shadow-lg">
+                    <DayPicker
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={handleDateSelect}
+                      disabled={{ before: new Date() }}
+                      showOutsideDays
+                    />
+                  </div>
+                )}
               </div>
 
               <div>

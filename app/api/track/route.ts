@@ -3,6 +3,7 @@ export const runtime = "nodejs";
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import Shipment from "@/models/shipment";
+import TrackingNumber from "@/models/trackigNumbers";
 import { z } from "zod";
 
 const schema = z.object({
@@ -22,6 +23,17 @@ export async function POST(req: Request) {
     }
 
     await dbConnect();
+
+    // Check if tracking number has been deactivated
+    const trackingRecord = await TrackingNumber.findOne({
+      trackingNumber: parsed.data.trackingNumber,
+    });
+    if (trackingRecord && !trackingRecord.isActive) {
+      return NextResponse.json(
+        { success: false, error: "This tracking number has been deactivated" },
+        { status: 403 }
+      );
+    }
 
     const shipment = await Shipment.findOne({
       trackingNumber: parsed.data.trackingNumber,

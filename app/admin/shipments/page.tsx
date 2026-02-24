@@ -142,7 +142,7 @@ export default function ShipmentsPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search by tracking number, status, location..."
-                  className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-800 focus:border-transparent"
                 />
                 <svg
                   className="absolute left-3 top-3.5 w-5 h-5 text-gray-400"
@@ -168,7 +168,7 @@ export default function ShipmentsPage() {
                   onClick={() => setFilter(f)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     filter === f
-                      ? 'bg-primary-500 text-white'
+                      ? 'bg-primary-800 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >

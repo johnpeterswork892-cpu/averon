@@ -24,7 +24,7 @@ export default function TrackingNumbersPage() {
 
   const fetchTrackingNumbers = async () => {
     try {
-      const res = await fetch('/api/admin/tracking-numbers');
+      const res = await fetch('/api/adminTrackingNumbers');
       const data = await res.json();
       if (data.success) {
         setTrackingNumbers(data.data);
@@ -39,7 +39,7 @@ export default function TrackingNumbersPage() {
   const generateTrackingNumber = async () => {
     setIsGenerating(true);
     try {
-      const res = await fetch('/api/admin/tracking-numbers/generate', {
+      const res = await fetch('/api/genTrackingNum', {
         method: 'POST',
       });
       const data = await res.json();
@@ -57,43 +57,12 @@ export default function TrackingNumbersPage() {
     }
   };
 
-  const generateBulkTrackingNumbers = async () => {
-    const count = prompt('How many tracking numbers would you like to generate? (1-100)');
-    if (!count) return;
-
-    const num = parseInt(count);
-    if (isNaN(num) || num < 1 || num > 100) {
-      alert('Please enter a number between 1 and 100');
-      return;
-    }
-
-    setIsGenerating(true);
-    try {
-      const res = await fetch('/api/admin/tracking-numbers/generate-bulk', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ count: num }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        alert(`Successfully generated ${data.count} tracking numbers`);
-        fetchTrackingNumbers();
-      } else {
-        alert('Failed to generate tracking numbers');
-      }
-    } catch (error) {
-      console.error('Failed to generate tracking numbers:', error);
-      alert('Failed to generate tracking numbers');
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
+  
   const deactivateTrackingNumber = async (trackingNumber: string) => {
     if (!confirm(`Are you sure you want to deactivate ${trackingNumber}?`)) return;
 
     try {
-      const res = await fetch(`/api/admin/tracking-numbers/${trackingNumber}/deactivate`, {
+      const res = await fetch(`/api/adminDeactivateTracking/${trackingNumber}`, {
         method: 'POST',
       });
       const data = await res.json();
@@ -152,17 +121,11 @@ export default function TrackingNumbersPage() {
                 <button
                   onClick={generateTrackingNumber}
                   disabled={isGenerating}
-                  className="px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 disabled:bg-gray-300 transition-colors"
+                  className="px-6 py-3 bg-primary-800 text-white font-semibold rounded-xl hover:bg-primary-600 disabled:bg-gray-300 transition-colors"
                 >
                   {isGenerating ? 'Generating...' : 'Generate Single'}
                 </button>
-                <button
-                  onClick={generateBulkTrackingNumbers}
-                  disabled={isGenerating}
-                  className="px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 disabled:bg-gray-300 transition-colors"
-                >
-                  {isGenerating ? 'Generating...' : 'Generate Bulk'}
-                </button>
+                
               </div>
             </div>
           </div>
@@ -228,7 +191,7 @@ export default function TrackingNumbersPage() {
                   onClick={() => setFilter(f)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     filter === f
-                      ? 'bg-primary-500 text-white'
+                      ? 'bg-primary-800 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -255,9 +218,7 @@ export default function TrackingNumbersPage() {
                     <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                       Created
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      Used
-                    </th>
+
                     <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                       Actions
                     </th>

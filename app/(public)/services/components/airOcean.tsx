@@ -52,7 +52,7 @@ export default function AirOceanFreight() {
               </h2>
 
               <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                Connect your business to global markets with our comprehensive international shipping solutions. Whether you need rapid air freight or cost-effective ocean transport, we provide reliable, secure, and competitively priced services to over 150 countries worldwide.
+                Seamlessly connect your business to global markets with premium international freight solutions. From expedited air cargo to strategic ocean transport, we deliver secure, efficient, and competitively positioned shipping across 150+ countries.
               </p>
 
               {/* Key Features */}
@@ -64,24 +64,24 @@ export default function AirOceanFreight() {
                 <div className="space-y-4">
                   {[
                     {
-                      title: "Global Network Coverage",
+                      title: "Global Network Advantage",
                       text:
-                        "Partnerships with major airlines and shipping lines ensure your cargo reaches any destination efficiently, with direct routes to major ports and airports across six continents.",
+                        "Access established partnerships with leading airlines and ocean carriers, ensuring streamlined routes and priority handling worldwide.",
                     },
                     {
-                      title: "Customs Clearance Expertise",
+                      title: "Expert Customs Management",
                       text:
-                        "Our experienced customs brokers handle all documentation, duties, and compliance requirements, ensuring smooth clearance at both origin and destination ports without delays or complications.",
+                        "Our specialists oversee documentation and compliance with precision, minimizing delays at every checkpoint.",
                     },
                     {
-                      title: "Real-Time Cargo Tracking",
+                      title: "End-to-End Visibility",
                       text:
-                        "Monitor your shipments 24/7 with our advanced tracking system. Receive automatic updates at every milestone, from departure to arrival, giving you complete visibility and peace of mind.",
+                        "Advanced tracking technology provides real-time updates from origin to final delivery.",
                     },
                     {
-                      title: "Flexible Service Options",
+                      title: "Tailored Shipping Strategies",
                       text:
-                        "Choose from express air freight for time-sensitive cargo or economical ocean freight for cost-effective bulk shipments. We offer door-to-door, port-to-port, and door-to-port services tailored to your needs.",
+                        "Flexible air and ocean options designed to align with your timelines, cargo type, and budget objectives.",
                     },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
@@ -122,12 +122,12 @@ export default function AirOceanFreight() {
                     Air Freight Services
                   </h4>
                   <p className="text-gray-600 mb-3">
-                    When time is critical, our air freight services deliver. We work with leading cargo airlines to provide fast, reliable international shipping with departure frequencies that meet your urgent deadlines. Ideal for high-value goods, perishables, and time-sensitive shipments requiring delivery within 2-5 days globally.
+                    Premium air cargo solutions designed for speed and reliability. Ideal for high-value, urgent, and time-sensitive shipments with global delivery typically within 2–5 days.
                   </p>
                   <ul className="space-y-2 text-gray-600">
-                    <li>Express Air: 24-48 hour delivery to major cities</li>
-                    <li>Standard Air: 3-5 day delivery worldwide</li>
-                    <li>Consolidated Air: Cost-effective for smaller shipments</li>
+                    <li>Express Air: 24–48 hour delivery to major hubs</li>
+                    <li>Standard Air: 3–5 day global transit</li>
+                    <li>Consolidated Air: Optimized cost efficiency</li>
                   </ul>
                 </div>
 
@@ -136,12 +136,12 @@ export default function AirOceanFreight() {
                     Ocean Freight Services
                   </h4>
                   <p className="text-gray-600 mb-3">
-                    For larger volumes and cost-conscious shipping, our ocean freight solutions offer unbeatable value. We provide both full container load (FCL) and less than container load (LCL) options, with weekly sailings to all major ports. Perfect for bulk commodities, large equipment, and high-volume merchandise with flexible delivery timeframes of 15-45 days depending on destination.
+                    Strategic ocean freight built for scale and value. Ideal for bulk and high-volume cargo with dependable global sailings and flexible delivery timelines.
                   </p>
                   <ul className="space-y-2 text-gray-600">
-                    <li>FCL: Dedicated 20ft, 40ft, and 40ft high-cube containers</li>
-                    <li>LCL: Shared container space for smaller shipments</li>
-                    <li>Break Bulk: Oversized and heavy cargo handling</li>
+                    <li>FCL: Dedicated 20ft, 40ft & high-cube containers</li>
+                    <li>LCL: Cost-efficient shared container space</li>
+                    <li>Break Bulk: Specialized oversized cargo handling</li>
                   </ul>
                 </div>
               </div>
