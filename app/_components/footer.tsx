@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-gray-100 text-primary-600">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 py-15 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
           <Image
             src="/assets/Averon_Express_Logo_Transparent.png"
@@ -14,14 +14,14 @@ export default function Footer() {
             priority
             className="w-25 h-auto -mt-8.75"
           />
-          <p className="text-sm leading-relaxed text-primary-700 max-w-sm">
+          <p className="text-sm leading-relaxed text-primary-700 max-w-sm text-[15px] font-medium">
             Your trusted partner for express courier services, freight logistics, and global supply chain solutions.
           </p>
         </div>
 
         <div>
-          <h4 className="text-accent-500 font-semibold mb-4">Company</h4>
-          <ul className="space-y-3 text-sm">
+          <h4 className="text-accent-500 font-semibold text-[17px] mb-3">Company</h4>
+          <ul className="space-y-2 text-[15px] font-medium">
             <li>
               <Link href="/about" className="hover:text-primary-400 transition">
                 About Us
@@ -33,12 +33,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/careers" className="hover:text-primary-400 transition">
+              <Link href="/" className="hover:text-primary-400 transition">
                 Careers
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-primary-400 transition">
+              <Link href="/customer-service" className="hover:text-primary-400 transition">
                 Contact
               </Link>
             </li>
@@ -46,8 +46,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-accent-500 font-semibold mb-4">Support</h4>
-          <ul className="space-y-3 text-sm">
+          <h4 className="text-accent-500 font-semibold text-[17px] mb-3">Support</h4>
+          <ul className="space-y-2 text-[15px] font-medium">
             <li>
               <Link href="/track" className="hover:text-primary-400 transition">
                 Track Shipment
@@ -62,12 +62,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-primary-400 transition">
+              <Link href="/customer-service/#faq" className="hover:text-primary-400 transition">
                 FAQs
               </Link>
             </li>
             <li>
-              <Link href="/claims" className="hover:text-primary-400 transition">
+              <Link href="/customer-service" className="hover:text-primary-400 transition">
                 File a Claim
               </Link>
             </li>
@@ -75,20 +75,20 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-accent-500 font-semibold mb-4">Legal</h4>
-          <ul className="space-y-3 text-sm">
+          <h4 className="text-accent-500 font-semibold text-[17px] mb-3">Legal</h4>
+          <ul className="space-y-2 text-[15px] font-medium">
             <li>
-              <Link href="/terms" className="hover:text-primary-400 transition">
+              <Link href="/services" className="hover:text-primary-400 transition">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-primary-400 transition">
+              <Link href="/customer-service" className="hover:text-primary-400 transition">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="/cookies" className="hover:text-primary-400 transition">
+              <Link href="/customer-service" className="hover:text-primary-400 transition">
                 Cookie Policy
               </Link>
             </li>
@@ -99,11 +99,11 @@ export default function Footer() {
       <div className="border-t border-white/10 bg-accent-600">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white">
-            © {new Date().getFullYear()} SwiftLogix. All rights reserved.
+            © {new Date().getFullYear()} Averon Express. All rights reserved.
           </p>
 
           <p className="text-sm text-white">
-           Fast. Reliable. Global
+           Fast. Safe. Reliable
           </p>
         </div>
       </div>

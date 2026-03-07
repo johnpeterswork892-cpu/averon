@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
   LayoutDashboard,
@@ -10,11 +10,14 @@ import {
   Hash,
   Menu,
   X,
+  LogOut,
 } from 'lucide-react';
 
 export default function AdminNavbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const navLinks = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -27,6 +30,18 @@ export default function AdminNavbar() {
       return pathname === '/admin';
     }
     return pathname.startsWith(href);
+  };
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      router.push('/admin/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    } finally {
+      setIsLoggingOut(false);
+    }
   };
 
   return (
@@ -80,6 +95,16 @@ export default function AdminNavbar() {
               ← Back to Site
             </Link>
 
+            {/* Logout Button */}
+            <button
+              onClick={handleLogout}
+              disabled={isLoggingOut}
+              className="hidden sm:flex items-center gap-1.5 text-sm text-gray-600 hover:text-red-600 transition-colors disabled:opacity-50"
+            >
+              <LogOut size={16} />
+              {isLoggingOut ? 'Logging out...' : 'Logout'}
+            </button>
+
             <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-semibold">
               A
             </div>
@@ -121,6 +146,16 @@ export default function AdminNavbar() {
             >
               ← Back to Site
             </Link>
+
+            {/* Logout in mobile menu */}
+            <button
+              onClick={() => { setIsOpen(false); handleLogout(); }}
+              disabled={isLoggingOut}
+              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-600 hover:text-red-600 transition-colors disabled:opacity-50"
+            >
+              <LogOut size={16} />
+              {isLoggingOut ? 'Logging out...' : 'Logout'}
+            </button>
           </div>
         )}
       </div>

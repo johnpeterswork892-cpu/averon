@@ -560,7 +560,7 @@ export default function CustomerServicePage() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-16 px-4" id="faq">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial="hidden"

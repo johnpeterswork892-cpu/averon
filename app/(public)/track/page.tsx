@@ -37,11 +37,14 @@ export default function TrackPage() {
         throw new Error(result.error || "Failed to track package");
       }
       setTrackingData(result.data as TrackingData);
+      setIsLoading(false);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
+        setIsLoading(false);
       } else {
         setError("An unexpected error occurred");
+        setIsLoading(false);
       }
     }
   };
